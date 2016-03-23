@@ -36,6 +36,10 @@ module GraphQL
     line, col = error.cause.source.line_and_column(error.cause.pos)
     raise GraphQL::ParseError.new(error.message, line, col, string)
   end
+
+  def self.parse_with_racc(string)
+    GraphQLRaccParser.parse(string)
+  end
 end
 
 # Order matters for these:
